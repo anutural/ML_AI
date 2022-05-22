@@ -1,0 +1,32 @@
+#This is not needed as we are only interested in primary category
+permalink = []
+funding_round_permalink = []
+raised_amount_usd = []
+name = []
+category_list = []
+country_code = []
+
+for id, record in master_frame.iterrows():
+    length = 0;
+    if record['category_list'] != record['category_list']:
+        length = 1
+        category_list.append(record['category_list'])
+    else:
+        length = len(record['category_list'])
+        category_list.extend(record['category_list'])
+    permalink.extend([record['permalink']]*length)
+    funding_round_permalink.extend([record['funding_round_permalink']]*length)
+    raised_amount_usd.extend([record['raised_amount_usd']]*length)
+    name.extend([record['name']]*length)
+    country_code.extend([record['country_code']]*length)
+        
+ExtractedData = pd.DataFrame(
+{
+    'permalink' : permalink,
+    'funding_round_permalink' : funding_round_permalink,
+    'raised_amount_usd' : raised_amount_usd,
+    'name' : name,
+    'category_list' : category_list,
+    'country_code' : country_code
+}
+)
